@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YACP", "YACP\YACP.csproj", "{05DE8B50-7EFB-45A4-B868-351E7535AD8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YACP.Test", "YACP.Test\YACP.Test.csproj", "{8255FFCE-8FE9-4D07-B695-F0FF9526BB75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YACP.Runtime", "YACP.Runtime\YACP.Runtime.csproj", "{2EDD49EA-4EA2-46BA-B223-7598A0979C64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05DE8B50-7EFB-45A4-B868-351E7535AD8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DE8B50-7EFB-45A4-B868-351E7535AD8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DE8B50-7EFB-45A4-B868-351E7535AD8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DE8B50-7EFB-45A4-B868-351E7535AD8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8255FFCE-8FE9-4D07-B695-F0FF9526BB75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8255FFCE-8FE9-4D07-B695-F0FF9526BB75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8255FFCE-8FE9-4D07-B695-F0FF9526BB75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8255FFCE-8FE9-4D07-B695-F0FF9526BB75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EDD49EA-4EA2-46BA-B223-7598A0979C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EDD49EA-4EA2-46BA-B223-7598A0979C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EDD49EA-4EA2-46BA-B223-7598A0979C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EDD49EA-4EA2-46BA-B223-7598A0979C64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+﻿/YACP/obj/
+/YACP/bin/
+.idea/
+/YACP.Test/obj/
+/YACP.Test/bin/
+/YACP.Runtime/bin/
+/YACP.Runtime/obj/
+YACP.sln.DotSettings.user
