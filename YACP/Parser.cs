@@ -18,7 +18,12 @@ public static class Parser
         var splitCommand = SplitCommand(command);
         var type = typeof(T);
         var commandEntity = Activator.CreateInstance<T>();
-        var commandAttribute = GetCommandAttribute(type);
+
+        if (!command.IsCommandOf<T>())
+        {
+            throw new InvalidCommandException("The command is not valid for the entity");
+        }
+        
         var arguments = MapArguments(type);
 
         foreach (var (propertyInfo, argumentAttribute) in arguments)
@@ -26,7 +31,7 @@ public static class Parser
             var (matchedIdentifier, matchedIndex) = splitCommand.GetIdentifierIndex(argumentAttribute);
             if (matchedIndex == -1)
             {
-                commandEntity = HandleMissingProperty<T>(splitCommand, propertyInfo, argumentAttribute);
+                commandEntity = HandleMissingProperty<T>(commandEntity, splitCommand, propertyInfo, argumentAttribute);
                 continue;
             }
 
@@ -175,6 +180,22 @@ public static class Parser
         return commandEntity;
     }
 
+    public static bool IsCommandOf<T>(this string command)
+    {
+        var type = typeof(T);
+        var commandAttribute = GetCommandAttribute(type);
+        foreach (var commandAttributeName in commandAttribute.Names)
+        {
+            var matchName = $"{commandAttribute.Prefix}{commandAttributeName}";
+            if (command.StartsWith(matchName))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private static List<string> GetMiddleValues(int currentIndex, string[] splitCommand, List<(PropertyInfo, ArgumentAttribute)> arguments)
     {
         var re = new List<string>();
@@ -195,7 +216,7 @@ public static class Parser
         return arguments.Any(x => x.Item2.Identifiers.Any(z => z == item));
     }
     
-    private static T HandleMissingProperty<T>(string[] splitCommand, PropertyInfo propertyInfo,
+    private static T HandleMissingProperty<T>(T commandEntity, string[] splitCommand, PropertyInfo propertyInfo,
         ArgumentAttribute argumentAttribute)
     {
         if (argumentAttribute.IsRequired && (argumentAttribute.IsDefault || argumentAttribute.DefaultValue != null))
@@ -204,7 +225,6 @@ public static class Parser
                 $"{nameof(argumentAttribute.IsRequired)}, {nameof(argumentAttribute.IsDefault)}, {nameof(argumentAttribute.DefaultValue)} cannot be set at same time");
         }
 
-        var commandEntity = Activator.CreateInstance<T>();
         if (argumentAttribute.IsRequired)
         {
             throw new InvalidCommandException($"Missing required argument: {propertyInfo.Name}");
