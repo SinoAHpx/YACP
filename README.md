@@ -16,7 +16,7 @@ YACP is not powerful.
 
 ### Expected syntax
 
-Unlike other command parsers, YACP is not dedicatedly design for a command line app, and it also does not strictly follow the rule of POSIX command line. YACP needs a raw input command and a CLR typed entity (class, record, struct...ect), the CLR type uses diverse attribute to represent the command.
+Unlike other command parsers, YACP is not dedicatedly design for a command line app, and it also does not strictly follow the rule of POSIX command line. YACP needs a raw input command and a CLR typed entity (class, record, struct...etc), the CLR type uses diverse attribute to represent the command.
 
 Here is a very standard expected command for YACP: `/help -a1 p1 -a2 222 -a3`, and a very standard command entity:
 
